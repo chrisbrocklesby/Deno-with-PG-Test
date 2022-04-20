@@ -9,13 +9,12 @@ const pool = new Pool({
   port: Deno.env.get("PGPORT") || '5432',
 }, 2);
 
-export default async (query) => {
+export default async (query, params) => {
   const client = await pool.connect();
   try {
-  const result = await client.queryObject(query)
-  return result.rows;
-  } catch (e) {
-    console.log(e);
+  return (await client.queryObject(query, params)).rows || [];
+  } catch (error) {
+    console.error(error);
   } finally {
     client.release();
   }

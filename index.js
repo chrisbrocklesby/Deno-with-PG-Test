@@ -15,6 +15,12 @@ router.get("/test", async (ctx) => {
   ctx.response.body = query;
 });
 
+router.get("/test/:id", async (ctx) => {
+  const query = await db("SELECT * FROM posts WHERE id = $id", {id: ctx.params.id});
+  ctx.response.body = query[0];
+});
+
+
 app.use(router.routes());
 
 app.listen({ port: 3000 });

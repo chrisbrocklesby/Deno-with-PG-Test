@@ -4,7 +4,7 @@ const app = new Application();
 const router = new Router();
 
 router.get('/', (ctx) => {
-    ctx.response.body = 'Hello World!';
+    ctx.response.body = 'ByeWorld!';
 });
 
 app.use(router.routes());

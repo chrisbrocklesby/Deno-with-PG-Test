@@ -19,7 +19,9 @@ router.get("/posts/:id", async (ctx) => {
 });
 
 router.post("/posts", async (ctx) => {
-  const query = await db("INSERT INTO posts (title) VALUES ($title)", {title: ctx.params.title});
+  const query = await db("INSERT INTO posts (title, body) VALUES ($title, $body)", {
+    title: ctx.body.title,
+    body: ctx.body.body});
   ctx.response.body = query;
 });
 

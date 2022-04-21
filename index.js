@@ -5,7 +5,7 @@ const app = new Application();
 const router = new Router();
 
 router.get("/", (ctx) => {
-  ctx.response.body = "Welcome to Deno ! PG-Deno";
+  ctx.response.body = "Welcome to Deno ! PG-Deno 2";
 });
 
 router.get("/posts", async (ctx) => {
@@ -19,7 +19,7 @@ router.get("/posts/:id", async (ctx) => {
 });
 
 router.post("/posts", async (ctx) => {
-  const query = await db("INSERT INTO posts WHERE title=$title", {title: ctx.params.title});
+  const query = await db("INSERT INTO posts (title) VALUES ($title)", {title: ctx.params.title});
   ctx.response.body = query;
 });
 

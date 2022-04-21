@@ -5,7 +5,7 @@ const app = new Application();
 const router = new Router();
 
 router.get("/", (ctx) => {
-  ctx.response.body = "Welcome to Deno !";
+  ctx.response.body = "Welcome to Deno ! PG-Deno";
 });
 
 router.get("/test", async (ctx) => {

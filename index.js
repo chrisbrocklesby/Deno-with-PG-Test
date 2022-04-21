@@ -6,7 +6,7 @@ const app = new Application();
 const router = new Router();
 
 router.get("/", (ctx) => {
-  ctx.response.body = "Welcome to Deno ! PG-Deno 2";
+  ctx.response.body = "Welcome to Deno API Test";
 });
 
 router.get("/posts", async (ctx) => {
@@ -28,9 +28,9 @@ router.post("/posts", async (ctx) => {
   ctx.response.body = query;
 });
 
-everyMinute(() => {
-  console.log('CRON JOB RAN !!!!!! Testing cron job');
-});
+// everyMinute(() => {
+//   console.log('CRON JOB RAN !!!!!! Testing cron job');
+// });
 
 
 app.use(router.routes());

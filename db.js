@@ -1,7 +1,7 @@
 import { Pool } from "https://deno.land/x/postgres@v0.15.0/mod.ts";
 import "https://deno.land/x/dotenv/load.ts";
 
-const pool = new Pool(Deno.env.get('PG_CONNECTION_STRING') || '', 10);
+const pool = new Pool(Deno.env.get('PG_CONNECTION_STRING') || '', 5);
 
 export default async (query, params) => {
   console.log(pool)

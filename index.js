@@ -8,14 +8,19 @@ router.get("/", (ctx) => {
   ctx.response.body = "Welcome to Deno ! PG-Deno";
 });
 
-router.get("/test", async (ctx) => {
+router.get("/posts", async (ctx) => {
   const query = await db("SELECT * FROM posts");
   ctx.response.body = query;
 });
 
-router.get("/test/:id", async (ctx) => {
+router.get("/posts/:id", async (ctx) => {
   const query = await db("SELECT * FROM posts WHERE id = $id", {id: ctx.params.id});
   ctx.response.body = query[0];
+});
+
+router.post("/posts", async (ctx) => {
+  const query = await db("INSERT INTO posts WHERE title=$title", {title: ctx.params.title});
+  ctx.response.body = query;
 });
 
 

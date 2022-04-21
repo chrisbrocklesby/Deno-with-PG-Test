@@ -4,7 +4,6 @@ import "https://deno.land/x/dotenv/load.ts";
 const pool = new Pool(Deno.env.get('PG_CONNECTION_STRING') || '', 5);
 
 export default async (query, params) => {
-  console.log(pool)
   const client = await pool.connect();
   try {
   return (await client.queryObject(query, params)).rows || [];

@@ -1,4 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v10.5.1/mod.ts";
+import {everyMinute} from 'https://deno.land/x/deno_cron/cron.ts';
 import db from "./db.js"
 
 const app = new Application();
@@ -25,6 +26,10 @@ router.post("/posts", async (ctx) => {
     body: body.body
   });
   ctx.response.body = query;
+});
+
+everyMinute(() => {
+  console.log('CRON JOB RAN !!!!!! Testing cron job');
 });
 
 
